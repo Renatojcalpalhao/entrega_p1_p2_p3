@@ -1,0 +1,16 @@
+makefile
+
+```make
+all: compilador assembler executor
+
+compilador:
+	gcc -o compilador ./compilador/main.c
+
+assembler:
+	gcc -o assembler ./assembler/main.c
+
+executor:
+	gcc -o executor ./executor/main.c
+
+clean:
+	rm -f compilador assembler executor programa.asm programa.bin

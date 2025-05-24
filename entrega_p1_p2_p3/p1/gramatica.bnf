@@ -1,0 +1,36 @@
+<programa> ::= "PROGRAMA" <label> ":" "INICIO" <declaracoes> <atribuicao_final> "FIM"
+
+<label> ::= "\""<identificador>\""
+
+<declaracoes> ::= <declaracao> <declaracoes_restantes>
+<declaracoes_restantes> ::= <declaracao> <declaracoes_restantes> | ε
+
+<declaracao> ::= "VAR" <identificador> "=" <expressao>
+
+<atribuicao_final> ::= "RES" "=" <expressao>
+
+<expressao> ::= <termo> <expressao_restante>
+<expressao_restante> ::= "+" <termo> <expressao_restante>
+                       | "-" <termo> <expressao_restante>
+                       | ε
+
+<termo> ::= <fator> <termo_restante>
+<termo_restante> ::= "*" <fator> <termo_restante>
+                   | "/" <fator> <termo_restante>
+                   | ε
+
+<fator> ::= <numero>
+          | <identificador>
+          | "(" <expressao> ")"
+
+<identificador> ::= <letra> <identificador_restante>
+<identificador_restante> ::= <letra_ou_digito> <identificador_restante> | ε
+
+<letra_ou_digito> ::= <letra> | <digito>
+
+<letra> ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
+
+<digito> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+<numero> ::= <digito> <numero_restante>
+<numero_restante> ::= <digito> <numero_restante> | ε
